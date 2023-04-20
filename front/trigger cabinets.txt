@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE TRIGGER insert_cabinet
+    AFTER INSERT ON doctors
+    FOR EACH ROW
+    BEGIN
+        INSERT INTO cabinets (address, phone)
+        VALUES (NEW.adress_cabinet, NEW.phone);
+    END //
+DELIMITER ;

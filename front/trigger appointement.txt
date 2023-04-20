@@ -1,0 +1,10 @@
+DELIMITER //
+CREATE TRIGGER update_availability
+AFTER INSERT ON appointments
+FOR EACH ROW
+BEGIN
+  UPDATE availability
+  SET available = FALSE
+  WHERE id_availability = NEW.id_availability;
+END //
+DELIMITER //;

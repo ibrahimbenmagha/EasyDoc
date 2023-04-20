@@ -1,0 +1,47 @@
+CREATE TABLE specialties (
+  id_specialite INT AUTO_INCREMENT PRIMARY KEY,
+  name_specialite VARCHAR(250)
+);
+.
+
+CREATE TABLE doctors (
+  id_doc INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(25) NOT NULL,
+  email VARCHAR(25) NOT NULL,
+  phone VARCHAR(15),
+  specialite VARCHAR(250) references specialties (name_specialite ) ,
+  adress_cabinet VARCHAR(250)
+);
+
+CREATE TABLE cabinets (
+  id_cabinet INT AUTO_INCREMENT PRIMARY KEY,
+  address VARCHAR(250) NOT NULL references doctors(adress_cabinet),
+  phone VARCHAR(25) NOT NULL REFERENCES doctors(phone)
+);
+
+CREATE TABLE patients (
+  id_patient INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(25) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  phone VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE availability (
+  id_availability INT AUTO_INCREMENT PRIMARY KEY,
+  id_doc INT NOT NULL,
+  day_of_week VARCHAR(9) NOT NULL,
+  start_time TIME NOT NULL,
+  end_time TIME NOT NULL,
+  available BOOLEAN NOT NULL,
+  FOREIGN KEY (id_doc) REFERENCES Doctors(id_doc)
+);
+
+CREATE TABLE appointments (
+  id_Appointments INT AUTO_INCREMENT PRIMARY KEY,
+  id_doc INT NOT NULL,
+  id_patient INT NOT NULL,
+  appointment_result text,
+  appointment_day DATETIME NOT NULL,
+  FOREIGN KEY (id_doc) REFERENCES Doctors(id_doc),
+  FOREIGN KEY (id_patient) REFERENCES Patients(id_patient)
+);
