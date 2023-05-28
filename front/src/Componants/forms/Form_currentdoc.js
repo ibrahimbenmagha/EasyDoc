@@ -77,10 +77,6 @@ function Form_newdoc() {
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Matricule du metier" />
-                                                                <i className="input-icon uil uil-lock-alt"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
                                                                 <input type="password" className="form-style" placeholder="Your Password" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
