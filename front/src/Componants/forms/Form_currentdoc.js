@@ -32,15 +32,15 @@ function Form_newdoc() {
                                         <div className="card-3d-wrap mx-auto">
                                             <div className="card-3d-wrapper">
                                                 <div className="card-front">
-                                                    <div className="center-wrap">
+                                                <div className="center-wrap">
                                                         <div className="section text-center">
                                                             <h4 className="mb-4 pb-3">Log In</h4>
                                                             <div className="form-group">
-                                                                <input type="email" className="form-style" placeholder="Your Email" />
+                                                                <input type="email" className="form-style" placeholder="Email" />
                                                                 <i className="input-icon uil uil-at"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="password" className="form-style" placeholder="Your Password" />
+                                                                <input type="password" className="form-style" placeholder="Mot de pass" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <button className="btn mt-4"><a href="#" className="submit">SUBMIT</a></button>
@@ -48,10 +48,9 @@ function Form_newdoc() {
                                                     </div>
                                                 </div>
                                                 <div className="card-back">
-                                                    <div className="center-wrap">
+                                                <div className="center-wrap">
                                                         <div className="section text-center">
                                                             <h4 className="mb-4 pb-3">Sign Up</h4>
-
                                                             <div className="form-group">
                                                                 <input type="text" className="form-style" placeholder="Nom" />
                                                                 <i className="input-icon uil uil-user"></i>
@@ -69,6 +68,10 @@ function Form_newdoc() {
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
+                                                                <input type="text" className="form-style" placeholder="Adress de cabinet" />
+                                                                <i className="input-icon uil uil-lock-alt"></i>
+                                                            </div>
+                                                            <div className="form-group mt-2">
                                                                 <input type="text" className="form-style" placeholder="Numero de portable" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
@@ -77,7 +80,7 @@ function Form_newdoc() {
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="password" className="form-style" placeholder="Your Password" />
+                                                                <input type="text" className="form-style" placeholder="Mot de pass" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <button className="btn mt-4"> <a href="#" className="submit">SUBMIT</a></button>

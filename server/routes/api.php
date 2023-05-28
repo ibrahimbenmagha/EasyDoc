@@ -2,6 +2,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SpecialityController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +24,4 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
+Route::get('specialties', [SpecialityController::class,'GetAllSpecialities']);

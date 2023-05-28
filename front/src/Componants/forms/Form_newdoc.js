@@ -68,6 +68,10 @@ function Form_newdoc() {
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
+                                                                <input type="text" className="form-style" placeholder="Adress de cabinet" />
+                                                                <i className="input-icon uil uil-lock-alt"></i>
+                                                            </div>
+                                                            <div className="form-group mt-2">
                                                                 <input type="text" className="form-style" placeholder="Numero de portable" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
@@ -77,10 +81,6 @@ function Form_newdoc() {
                                                             </div>
                                                             <div className="form-group mt-2">
                                                                 <input type="text" className="form-style" placeholder="Mot de pass" />
-                                                                <i className="input-icon uil uil-lock-alt"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Confirmer le mot de pass" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <button className="btn mt-4"> <a href="#" className="submit">SUBMIT</a></button>
