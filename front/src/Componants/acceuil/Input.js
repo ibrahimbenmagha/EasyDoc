@@ -1,8 +1,8 @@
 import doc2 from "../photos/doc1.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import {CiLocationOn} from "react-icons/ci";
-import {TbCurrentLocation} from "react-icons/tb"
- 
+import {TbCurrentLocation} from "react-icons/tb";
+
  
 function Input() {
   return ( 
@@ -24,7 +24,7 @@ function Input() {
             <span className="txt tx2">&nbsp;un radiologue</span>
             <span className="txt tx3">&nbsp;un dentiste</span>
             <span className="txt tx4">&nbsp;un psychologue</span>
-            <span className="txt tx5">&nbsp;une sage femme</span>
+            <span className="txt tx5">&nbsp;un dermatologue</span>
 
           </span>
         </h1>

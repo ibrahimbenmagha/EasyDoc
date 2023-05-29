@@ -3,7 +3,7 @@ CREATE TRIGGER addavailability
 AFTER INSERT ON doctors
 FOR EACH ROW
 BEGIN
-  INSERT INTO doctor_availability (id_doc, day_of_week, start_time, end_time, available)
+  INSERT INTO availability (id_doc, day_of_week, start_time, end_time, available)
   VALUES
     (NEW.id, 'Monday', '10:00:00', '11:00:00', TRUE),
     (NEW.id, 'Monday', '09:00:00', '10:00:00', TRUE),

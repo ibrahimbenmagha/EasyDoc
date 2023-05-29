@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('availability', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->Integer('id_doc')->unique();
+            $table->Integer('id_doc');
             $table->string('day_of_week', 9)->nullable(false);
             $table->time('start_time')->nullable(false);
             $table->time('end_time')->nullable(false);

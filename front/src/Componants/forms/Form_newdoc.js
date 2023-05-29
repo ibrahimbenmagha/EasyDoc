@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 // import { Link, NavLink, Route, Routes } from "react-router-dom";
+import axios from 'axios';
 import "./../../css/Form_newdoc.css";
 import "./../../bootstrap/css/bootstrap.min.css"
 import img1 from "./../photos/docfemme.png"
 function Form_newdoc() {
+    const [specialities, setSpecialities] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/specialties')
+          .then(response => {
+            setSpecialities(response.data);
+          })
+          .catch(error => {
+            console.error('Error fetching specialities:', error);
+          });
+      }, []);
+
     return (
         <main className="mainmain">
             <div className="Form-newdoc">
@@ -36,14 +49,14 @@ function Form_newdoc() {
                                                         <div className="section text-center">
                                                             <h4 className="mb-4 pb-3">Log In</h4>
                                                             <div className="form-group">
-                                                                <input type="email" className="form-style" placeholder="Email" />
+                                                                <input type="email" className="form-style" placeholder="Email" name="AuthEmail"/>
                                                                 <i className="input-icon uil uil-at"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="password" className="form-style" placeholder="Mot de pass" />
+                                                                <input type="password" className="form-style" placeholder="Mot de pass" name="AuthPswrd" />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
-                                                            <button className="btn mt-4"><a href="#" className="submit">SUBMIT</a></button>
+                                                            <button className="btn mt-4 submit" name="authan">SE CONNECTER</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -52,38 +65,44 @@ function Form_newdoc() {
                                                         <div className="section text-center">
                                                             <h4 className="mb-4 pb-3">Sign Up</h4>
                                                             <div className="form-group">
-                                                                <input type="text" className="form-style" placeholder="Nom" />
+                                                                <input type="text" className="form-style" placeholder="Nom" name="name"/>
                                                                 <i className="input-icon uil uil-user"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Prenom" />
+                                                                <input type="text" className="form-style" placeholder="Prenom" name="surname"/>
                                                                 <i className="input-icon uil uil-user"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="email" className="form-style" placeholder="Email" />
+                                                                <input type="email" className="form-style" placeholder="Email" name="email"/>
                                                                 <i className="input-icon uil uil-at"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Code du cabinet" />
+                                                                <input type="text" className="form-style" placeholder="Code du cabinet" name="CodeCabinet"/>
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Adress de cabinet" />
+                                                                <input type="text" className="form-style" placeholder="Adress de cabinet" name="AddressCabinet"/>
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Numero de portable" />
+                                                                <input type="text" className="form-style" placeholder="Numero de portable" name="PhoneNumber"/>
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Votre specialite" />
-                                                                <i className="input-icon uil uil-lock-alt"></i>
+                                                            <select className="form-style" name="Speciality">
+                                                                <option>Select a Speciality</option>
+                                                                {specialities.map(speciality => (
+                                                                <option key={speciality.id} value={speciality.name_specialite}>
+                                                                    {speciality.name_specialite}
+                                                                </option>
+                                                                ))}
+                                                            </select>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Mot de pass" />
+                                                                <input type="text" className="form-style" placeholder="Mot de pass" name="Password"/>
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
-                                                            <button className="btn mt-4"> <a href="#" className="submit">SUBMIT</a></button>
+                                                            <button className="btn mt-4 submit" type="submit" name="Register">S'INSCRIRE</button>
                                                         </div>
                                                     </div>
                                                 </div>
