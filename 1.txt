@@ -1,0 +1,2 @@
+go to xampp setup than run
+ sudo /opt/lampp/lampp start start xampp

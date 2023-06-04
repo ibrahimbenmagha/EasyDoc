@@ -1,8 +1,0 @@
-DELIMITER //
-
-CREATE FUNCTION set_available_to_false() RETURNS VOID
-BEGIN
-    UPDATE doctors SET available = false;
-END //
-
-DELIMITER ;

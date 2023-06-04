@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('id_doc');
             $table->integer('id_patient');
             $table->text('appointment_result')->nullable();
+            $table->boolean('isApproved')->default(false);
             $table->integer('appointment_day')->nullable(false);
             $table->foreign('id_doc')->references('id')->on('doctors');
             $table->foreign('id_patient')->references('id')->on('patients');

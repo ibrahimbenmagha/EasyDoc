@@ -4,6 +4,6 @@ CREATE TRIGGER insert_cabinet
     FOR EACH ROW
     BEGIN
         INSERT INTO cabinets (address, phone)
-        VALUES (NEW.adress_cabinet, NEW.phone);
+        VALUES (NEW.addressCabinet, NEW.phoneNumber);
     END //
 DELIMITER ;

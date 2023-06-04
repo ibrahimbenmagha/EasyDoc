@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->string('name', 30)->nullable(false)->references('name')->on('users');
+            $table->string('name')->nullable(false)->references('name')->on('users');
             $table->string('surname',30)->nullable(false)->references('surname')->on('users');
-            $table->string('phone', 13)->nullable(false);
-            $table->string('email')->unique()->references('email')->on('users');
+            $table->string('phoneNumber', 250)->nullable(false);
+            $table->string('email',150)->unique()->references('email')->on('users');
             $table->string('specialite', 250)->nullable(false)->references('name_specialite')->on('specialties');
-            $table->string('adress_cabinet', 250)->nullable(false);
+            $table->string('addressCabinet', 250)->nullable(false);
             $table->rememberToken();
             $table->timestamps();
         });
