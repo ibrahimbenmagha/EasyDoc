@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('id')->autoIncrement();
             $table->string('name')->nullable(false)->references('name')->on('users');
             $table->string('surname',30)->nullable(false)->references('surname')->on('users');
-            $table->string('phoneNumber', 250)->nullable(false);
+            $table->string('phone', 250)->nullable(false);
             $table->string('email',150)->unique()->references('email')->on('users');
             $table->string('specialite', 250)->nullable(false)->references('name_specialite')->on('specialties');
             $table->string('addressCabinet', 250)->nullable(false);

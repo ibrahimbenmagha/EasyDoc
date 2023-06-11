@@ -1,10 +1,21 @@
 import doc2 from "../photos/doc1.png";
+import axios from "axios";
 import { AiOutlineSearch } from "react-icons/ai";
 import {CiLocationOn} from "react-icons/ci";
 import {TbCurrentLocation} from "react-icons/tb";
-
+import React, { useState } from 'react';
+import { useNavigate  } from "react-router-dom";
  
 function Input() {
+  const navigate = useNavigate ();
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    navigate('/doctorsearched');
+  };
   return ( 
     //<AiOutlineSearch/>
 
@@ -32,27 +43,22 @@ function Input() {
 
         <div className="input-searchbar-input-acciuil">
             <div class="container">
-              <form class="form">
+              <form class="form" onSubmit={handleSubmit}>
               
                 <div class="form-input">
                   <span class="icon"><AiOutlineSearch/></span>
-                  <input id="speciality_doc" className="input" type={"text"} placeholder={ "Nom, spécialité, établissement,..."}autoComplete="off" autoCorrect="off" autoCapitalize="off"  />
+                  <input name="name" id="speciality_doc" className="input" type={"text"}  placeholder={ "     Nom,  Prenom,  spécialité,..."}
+                          autoComplete="off" autoCorrect="off" autoCapitalize="off" onChange={(e) => setName(e.target.value)}/>
                 </div>
                 
                 <div class="form-input">
                   <span class="icon"><CiLocationOn/></span>
-                  <input  className="input" type={"text"} placeholder="Où ?"autoComplete="off" autoCorrect="off" autoCapitalize="off" />
-                </div>
-              
-                <div class="form-input2">
-                  <button id="loca_doc" className="input2" type={"submit"} onClick={(e)=>{e.preventDefault();}}>
-                    <span class="icon"><TbCurrentLocation/></span>
-                  </button>
-
+                  <input name="address" className="input" type={"text"} placeholder="Où ?"autoComplete="off" autoCorrect="off" autoCapitalize="off"
+                          onChange={(e) => setAddress(e.target.value)}/>
                 </div>
 
                 <div class="form-input1">
-                  <input id="submit_for_loca_doc" className="input2" type={"submit"} value="envoyer" onClick={(e)=>{e.preventDefault();}}/>
+                  <input id="submit_for_loca_doc" className="input2" type={"submit"} value="envoyer"/>
                 </div>
 
               </form>

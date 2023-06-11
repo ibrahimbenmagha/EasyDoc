@@ -11,7 +11,7 @@ class Doctor extends Model
     protected $fillable = [
         'name',
         'surname',
-        'phoneNumber',
+        'phone',
         'email',
         'specialite',
         'addressCabinet',

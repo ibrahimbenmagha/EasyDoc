@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cabinets', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('address', 250)->nullable(false)->references('adress_cabinet')->on('doctors');
-            $table->string('phoneNumber', 250)->nullable(false)->references('phone')->on('doctors');
+            $table->string('phone', 250)->nullable(false)->references('phone')->on('doctors');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
     FOR EACH ROW
     BEGIN
         INSERT INTO cabinets (address, phone)
-        VALUES (NEW.addressCabinet, NEW.phoneNumber);
+        VALUES (NEW.addressCabinet, NEW.phone);
     END;');
     }
 

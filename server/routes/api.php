@@ -33,8 +33,21 @@ Route::group([
 
 
 });
+
+//specialities routes
 Route::get('specialties', [SpecialityController::class,'GetAllSpecialities']);
-Route::get('/doctors', [DoctorController::class, 'getAllDoctors']);
+
+
+//Doctors routes
+Route::get('/doctors', [DoctorsController::class, 'getAllDoctors']);
+Route::get('/doctors/{id}', [DoctorsController::class, 'getDoctorById']);
+// Route::get('/doctors/{name?}/{surname?}', [DoctorsController::class, 'getDoctorByNameOrSurnameOrBoth']);
+// Route::get('/doctors/address', [DoctorsController::class, 'getDoctorsByAddressCabinet']);
+Route::post('/doctors/search/{name?}/{address?}', [DoctorsController::class, 'getDoctorsByAddressOrName']);
+
+
+
+
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout']);

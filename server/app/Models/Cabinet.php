@@ -14,8 +14,13 @@ class Cabinets extends Model
         'phone',
     ];
 
-    public function doctor()
+    public function doctorByAddress()
     {
-        return $this->hasOne(Doctor::class, 'adress_cabinet', 'address');
+        return $this->hasOne(Doctor::class, 'address_cabinet', 'address');
+    }
+
+    public function doctorByPhone()
+    {
+        return $this->hasOne(Doctor::class, 'phone', 'phone');
     }
 }
