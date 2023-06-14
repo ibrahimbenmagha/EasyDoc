@@ -13,8 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('specialities', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
-            $table->string('name_specialite', 250);
+            $table->string('name_specialite', 250)->primary();
             $table->timestamps();
         });
     }

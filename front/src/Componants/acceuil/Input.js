@@ -7,15 +7,6 @@ import React, { useState } from 'react';
 import { useNavigate  } from "react-router-dom";
  
 function Input() {
-  const navigate = useNavigate ();
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    navigate('/doctorsearched');
-  };
   return ( 
     //<AiOutlineSearch/>
 
@@ -43,22 +34,21 @@ function Input() {
 
         <div className="input-searchbar-input-acciuil">
             <div class="container">
-              <form class="form" onSubmit={handleSubmit}>
+              <form class="form">
               
                 <div class="form-input">
                   <span class="icon"><AiOutlineSearch/></span>
                   <input name="name" id="speciality_doc" className="input" type={"text"}  placeholder={ "     Nom,  Prenom,  spécialité,..."}
-                          autoComplete="off" autoCorrect="off" autoCapitalize="off" onChange={(e) => setName(e.target.value)}/>
+                          autoComplete="off" autoCorrect="off" autoCapitalize="off" />
                 </div>
                 
                 <div class="form-input">
                   <span class="icon"><CiLocationOn/></span>
-                  <input name="address" className="input" type={"text"} placeholder="Où ?"autoComplete="off" autoCorrect="off" autoCapitalize="off"
-                          onChange={(e) => setAddress(e.target.value)}/>
+                  <input name="address" className="input" type={"text"} placeholder="Où ?"autoComplete="off" autoCorrect="off" autoCapitalize="off"/>
                 </div>
 
                 <div class="form-input1">
-                  <input id="submit_for_loca_doc" className="input2" type={"submit"} value="envoyer"/>
+                  <input id="submit_for_loca_doc" className="input2" type={"submit"} value="envoyer" onClick={(e)=>{e.preventDefault();}}/>
                 </div>
 
               </form>

@@ -5,18 +5,41 @@ import axios from 'axios';
 import "./../../css/Form_newdoc.css";
 import "./../../bootstrap/css/bootstrap.min.css"
 import img1 from "./../photos/docfemme.png"
-function Form_newdoc() {
-    const [specialities, setSpecialities] = useState([]);
+import { useNavigate  } from "react-router-dom";
 
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/specialties')
+function Form_newdoc() {
+
+    const[email, setEmail]=useState();
+    const[password, setPassword]=useState();
+    const navigate = useNavigate ();
+
+
+    const handleLoginRedirect = (role) => {
+        if (role == "doctor") {
+          navigate("/Cancer");
+        } else if (role === "patient") {
+          navigate("/Cancer");
+        }
+        // setLoggedIn(true);
+        
+      };
+    const handleLogin = (e) => {
+        e.preventDefault();
+        axios
+          .post("http://127.0.0.1:8000/api/login", {
+            email: email,
+            password: password
+          })
           .then(response => {
-            setSpecialities(response.data);
+            // If the authentication was successful, call the onLogin function with the appropriate role
+            handleLoginRedirect(response.data.role);
           })
           .catch(error => {
-            console.error('Error fetching specialities:', error);
+            // Handle authentication errors here
+            console.log(error);
           });
-      }, []);
+      };
+      
 
     return (
         <main className="mainmain">
@@ -40,79 +63,34 @@ function Form_newdoc() {
                             <div className="col-12 aas text-center align-self-center py-5">
                                 <div className="section2 pb-5 pt-2 pt-sm-2 text-center">
                                     <div>
-                                        <h6 className="mb-0 pb-3"><span> Log In </span><span> Sign Up </span></h6>
-                                        <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" />
                                         <label for="reg-log"></label>
                                         <div className="card-3d-wrap mx-auto">
                                             <div className="card-3d-wrapper">
                                                 <div className="card-front">
-                                                    <form>
+                                                    <form method="POST" onSubmit={handleLogin}>
                                                         <div className="center-wrap">
                                                         <div className="section text-center">
                                                             <h4 className="mb-4 pb-3">Log In</h4>
                                                             <div className="form-group">
-                                                                <input type="email" className="form-style" placeholder="Email" name="AuthEmail"/>
+                                                                <input type="text" className="form-style" placeholder="Email" name="email"
+                                                                    onChange={(e) =>{setEmail(e.target.value)}}
+                                                                />
                                                                 <i className="input-icon uil uil-at"></i>
                                                             </div>
                                                             <div className="form-group mt-2">
-                                                                <input type="password" className="form-style" placeholder="Mot de pass" name="AuthPswrd" />
+                                                                <input type="password" className="form-style" placeholder="Mot de pass" name="password"
+                                                                     onChange={(e) =>{setPassword(e.target.value)}}
+                                                                />
                                                                 <i className="input-icon uil uil-lock-alt"></i>
                                                             </div>
-                                                            <button className="btn mt-4 submit" name="authan">SE CONNECTER</button>
+                                                            <button className="btn mt-4 submit" type="submit" name="authan">SE CONNECTER</button>
                                                         </div>
                                                     </div>
                                                     </form>
+
                                                 
                                                 </div>
-                                                <div className="card-back">
-                                                    <form>   
-                                                            <div className="center-wrap">
-                                                            <div className="section text-center">
-                                                            <h4 className="mb-4 pb-3">Sign Up</h4>
-                                                            <div className="form-group">
-                                                                <input type="text" className="form-style" placeholder="Nom" name="name"/>
-                                                                <i className="input-icon uil uil-user"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Prenom" name="surname"/>
-                                                                <i className="input-icon uil uil-user"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="email" className="form-style" placeholder="Email" name="email"/>
-                                                                <i className="input-icon uil uil-at"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Code du cabinet" name="CodeCabinet"/>
-                                                                <i className="input-icon uil uil-lock-alt"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Adress de cabinet" name="AddressCabinet"/>
-                                                                <i className="input-icon uil uil-lock-alt"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Numero de portable" name="PhoneNumber"/>
-                                                                <i className="input-icon uil uil-lock-alt"></i>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                            <select className="form-style" name="Speciality">
-                                                                <option>Select a Speciality</option>
-                                                                {specialities.map(speciality => (
-                                                                <option key={speciality.id} value={speciality.name_specialite}>
-                                                                    {speciality.name_specialite}
-                                                                </option>
-                                                                ))}
-                                                            </select>
-                                                            </div>
-                                                            <div className="form-group mt-2">
-                                                                <input type="text" className="form-style" placeholder="Mot de pass" name="Password"/>
-                                                                <i className="input-icon uil uil-lock-alt"></i>
-                                                            </div>
-                                                            <button className="btn mt-4 submit" type="submit" name="Register">S'INSCRIRE</button>
-                                                        </div>
-                                                    </div>
-                                                    </form>
-                                             
-                                                </div>
+                                           
 
                                             </div>
                                         </div>

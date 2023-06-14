@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('availability', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
-            $table->Integer('id_doc');
+            $table->id();
+            $table->foreignId('id_doc')->references('id')->on('doctors')->nullable();
             $table->string('day_of_week', 9)->nullable(false);
             $table->time('start_time')->nullable(false);
             $table->time('end_time')->nullable(false);
             $table->boolean('available')->nullable(false)->default(true);
-            $table->foreign('id_doc')->references('id')->on('doctors');
             $table->timestamps();
         });
     }

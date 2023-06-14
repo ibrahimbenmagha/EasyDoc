@@ -1,8 +1,12 @@
 import Navbar from "../acceuil/Navbar"
 import '../../css/navbar.css';
+import axios from "axios";
 import React from "react";
 import { Route, Routes, Link, NavLink } from "react-router";
-function Cancer() {
+
+
+
+function AffichDoc() {
     return (
         <>
             <header className="bg-info">
@@ -10,11 +14,11 @@ function Cancer() {
             </header>
             <article className="article-cancer-all">
                 <div>
-                    waaa3
+                    
                 </div>
             </article>
         </>
     )
 }
 
-export default Cancer;
+export default AffichDoc;

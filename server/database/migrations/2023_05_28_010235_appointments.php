@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->integer('id_doc');
-            $table->integer('id_patient');
+            $table->foreignId('id_doc')->references('id')->on('doctors');
+            $table->foreignId('id_patient')->references('id')->on('patients');
+            $table->foreignId('id_availability')->references('id')->on('availability');
             $table->text('appointment_result')->nullable();
             $table->boolean('isApproved')->default(false);
-            $table->integer('appointment_day')->nullable(false);
-            $table->foreign('id_doc')->references('id')->on('doctors');
-            $table->foreign('id_patient')->references('id')->on('patients');
-            $table->foreign('appointment_day')->references('id')->on('availability');
             $table->timestamps();
         });
     }

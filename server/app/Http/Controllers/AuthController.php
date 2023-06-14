@@ -29,6 +29,7 @@ class AuthController extends Controller
             'surname' => 'required|string',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6',
+            'role' => 'string',
         ]);
         
         if($userValidator->fails()){
@@ -38,7 +39,7 @@ class AuthController extends Controller
         $user = User::create(array_merge(
             $userValidator->validated(),
             ['password' => bcrypt($request->password),
-            'role' => 'doctor', // Set the role to 'doctor'
+        //    'role' => 'doctor', // Set the role to 'doctor'
             ]
         ));
         
@@ -47,7 +48,7 @@ class AuthController extends Controller
             'surname' => 'required|string',
             'email' => 'required|string|email|max:100|unique:doctors',
             'addressCabinet' => 'required|string',
-            'phoneNumber' => 'required|string',
+            'phone' => 'required|string',
             'specialite' => 'required|string',
         ]);
         

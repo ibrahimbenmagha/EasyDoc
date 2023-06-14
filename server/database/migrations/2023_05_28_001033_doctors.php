@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->id();
             $table->string('name')->nullable(false)->references('name')->on('users');
             $table->string('surname',30)->nullable(false)->references('surname')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users')->nullable();
             $table->string('phone', 250)->nullable(false);
             $table->string('email',150)->unique()->references('email')->on('users');
-            $table->string('specialite', 250)->nullable(false)->references('name_specialite')->on('specialties');
+            $table->string('specialite', 250);
+            $table->foreign('specialite')->references('name_specialite')->on('specialities');
             $table->string('addressCabinet', 250)->nullable(false);
             $table->rememberToken();
             $table->timestamps();
