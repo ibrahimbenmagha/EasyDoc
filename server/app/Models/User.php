@@ -19,6 +19,7 @@ class User extends Authenticatable implements JWTSubject
         'surname',
         'email',
         'password',
+        'role',
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -53,5 +54,15 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims() {
         return [];
-    }    
+    }
+    
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class, 'user_id', 'id');
+    }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'user_id', 'id');
+    }
 }

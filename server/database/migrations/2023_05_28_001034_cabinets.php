@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cabinets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_doc')->references('id')->on('doctors')->nullable();
+            $table->foreignId('id_doc')->nullable(true)->references('id')->on('doctors')->nullable();
             $table->string('address', 250)->nullable(false)->references('adress_cabinet')->on('doctors');
             $table->string('phone', 250)->nullable(false)->references('phone')->on('doctors');
             $table->timestamps();

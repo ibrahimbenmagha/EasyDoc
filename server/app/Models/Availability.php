@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Availability extends Model
 {
     use HasFactory;
+    protected $table = "availability";
+    protected $primaryKey = "vailability";
     protected $fillable = [
         'id_doc',
         'day_of_week',

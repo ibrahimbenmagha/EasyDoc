@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('availability', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_doc')->references('id')->on('doctors')->nullable();
+            $table->foreignId('id_doc')->nullable(true)->references('id')->on('doctors')->nullable();
             $table->string('day_of_week', 9)->nullable(false);
             $table->time('start_time')->nullable(false);
             $table->time('end_time')->nullable(false);

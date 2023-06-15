@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name',30)->nullable(false)->references('name')->on('users');
             $table->string('surname',30)->nullable(false)->references('surname')->on('users');
             $table->string('email',35)->unique()->references('email')->on('users');
-            $table->foreignId('user_id')->references('id')->on('users')->nullable();
+            $table->foreignId('user_id')->nullable(true)->references('id')->on('users')->nullable();
             $table->string('phone', 25)->nullable(false);
             $table->rememberToken();
             $table->timestamps();

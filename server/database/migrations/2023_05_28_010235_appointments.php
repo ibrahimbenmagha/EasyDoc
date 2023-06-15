@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->id();
             $table->foreignId('id_doc')->references('id')->on('doctors');
             $table->foreignId('id_patient')->references('id')->on('patients');
             $table->foreignId('id_availability')->references('id')->on('availability');
-            $table->text('appointment_result')->nullable();
+            $table->text('appointment_result')->nullable(true);
             $table->boolean('isApproved')->default(false);
             $table->timestamps();
         });

@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TRIGGER insert_cabinet
-    AFTER INSERT ON doctors
-    FOR EACH ROW
-    BEGIN
-        INSERT INTO cabinets (address, phone)
-        VALUES (NEW.addressCabinet, NEW.phone);
-    END;');
+        // DB::statement('CREATE TRIGGER update_user_id
+        //     AFTER INSERT ON doctors
+        //     FOR EACH ROW
+        //     BEGIN
+        //         UPDATE doctors
+        //         SET user_id = (SELECT id FROM users WHERE role = "doctor" AND id = NEW.user_id)
+        //         WHERE id = NEW.id;
+        //     END;');
     }
+    
 
     /**
      * Reverse the migrations.

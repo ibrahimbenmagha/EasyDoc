@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Cabinets extends Model
 {
     use HasFactory;
-
+    protected $table="cabinets";
+    protected $primaryKey="id";
     protected $fillable = [
         'address',
         'phone',
+        'id_doc',
     ];
 
     public function doctorByAddress()
@@ -22,5 +24,10 @@ class Cabinets extends Model
     public function doctorByPhone()
     {
         return $this->hasOne(Doctor::class, 'phone', 'phone');
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'id_doc','id');
     }
 }
